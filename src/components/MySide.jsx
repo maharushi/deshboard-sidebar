@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import {
   FaTh,
   FaBars,
-  FaUserAlt,
   FaRegChartBar,
   FaCommentAlt,
   FaShoppingBag,
   FaThList,
+  FaUserAlt,
 } from "react-icons/fa";
+
 import { NavLink } from "react-router-dom";
 
-const Sidebar = ({ children }) => {
+const MySide = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
@@ -24,35 +25,16 @@ const Sidebar = ({ children }) => {
       name: "About",
       icon: <FaUserAlt />,
     },
-    {
-      path: "/analytics",
-      name: "Analytics",
-      icon: <FaRegChartBar />,
-    },
-    {
-      path: "/comment",
-      name: "Comment",
-      icon: <FaCommentAlt />,
-    },
-    {
-      path: "/product",
-      name: "Product",
-      icon: <FaShoppingBag />,
-    },
-    {
-      path: "/productList",
-      name: "Product List",
-      icon: <FaThList />,
-    },
   ];
+
   return (
     <div className="container">
-      <div style={{ width: isOpen ? "200px" : "50px" }} className="sidebar">
+      <div className="sidebar" style={{ width: isOpen ? "200px" : "50px" }}>
         <div className="top_section">
-          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
-            Logo
+          <h1 className="logo" style={{ display: isOpen ? "block" : "none" }}>
+            KMR
           </h1>
-          <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
+          <div className="bars" style={{ marginLeft: isOpen ? "50px" : "0px" }}>
             <FaBars onClick={toggle} style={{ cursor: "pointer" }} />
           </div>
         </div>
@@ -61,12 +43,12 @@ const Sidebar = ({ children }) => {
             to={item.path}
             key={index}
             className="link"
-            activeclassName="active"
+            activeClassName="active"
           >
             <div className="icon">{item.icon}</div>
             <div
-              style={{ display: isOpen ? "block" : "none" }}
               className="link_text"
+              style={{ display: isOpen ? "block" : "none" }}
             >
               {item.name}
             </div>
@@ -78,4 +60,4 @@ const Sidebar = ({ children }) => {
   );
 };
 
-export default Sidebar;
+export default MySide;
